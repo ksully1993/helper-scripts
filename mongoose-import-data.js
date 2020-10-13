@@ -1,3 +1,4 @@
+// script to import json file data to db using mongoose models
 // command line argument format:
 // node import-data.js model command path/to/file
 // DB and password should be defined in config.env file
