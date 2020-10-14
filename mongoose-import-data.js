@@ -90,8 +90,12 @@ const loadFile = () => {
   return data;
 };
 
-// Import or Delete based on cmd line args
 if (argv._[0] === 'import') {
+  // Import documents to db
+  const jsonFile = loadFile();
+  const query = model.create(jsonFile);
+  importData(query);
+} else if (argv._[0] === 'update') {
   const jsonFile = loadFile();
   // Find parent _id in db
   Customer.findOne({ name: fleetName }).then((customer) => {
@@ -107,6 +111,7 @@ if (argv._[0] === 'import') {
     importData(query);
   });
 } else if (argv._[0] === 'delete') {
+  // delete all documents from collection
   const query = model.deleteMany();
   deleteData(query);
 } else {
