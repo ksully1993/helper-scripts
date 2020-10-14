@@ -95,7 +95,7 @@ if (argv._[0] === 'import') {
   const jsonFile = loadFile();
   // Find parent _id in db
   Customer.findOne({ name: fleetName }).then((customer) => {
-    const ID = JSON.stringify(customer._id);
+    const ID = customer._id;
     // Update each document with new parent reference
     const updatedFile = [];
     jsonFile.forEach((el) => {
